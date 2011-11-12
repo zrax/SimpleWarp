@@ -1,0 +1,23 @@
+name: SimpleWarp
+
+main: com.bukkit.JamesArchuleta.Warp.Warp
+
+version: 1.63 
+
+commands:
+  warp:
+    description: warps to your location
+    usage: /<command> <name> warp to that location
+  warpto:
+    description: warps player to specified location
+    usage: /<command> <player> <name> warps specified player to the location
+  listwarps:
+    description: lists warps
+    usage: /<command> [filter] list warps use filter to narrow down
+  setwarp:
+    description: sets a your location to warp point
+    usage: /<command> <name> sets a warp current location
+  removewarp:
+    description: sets a your location to warp point 
+    usage: /<command> <name> removes warp at your location
+    
