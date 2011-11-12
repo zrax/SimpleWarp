@@ -16,12 +16,17 @@ public class CmdWarpTo extends Command {
     public Boolean run(CommandSender sender, org.bukkit.command.Command command, String commandLabel,
             String[] args, Server server) {
 
-        if( !hasPermissions((Player)sender)){
-            ((Player)sender).sendMessage("You do not have permission to use this command.");
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can use the warpto command.");
             return true;
         }
 
-        if (args.length == 2  && hasPermissions((Player)sender)){
+        if( !hasPermissions((Player)sender)){
+            sender.sendMessage("You do not have permission to use this command.");
+            return true;
+        }
+
+        if (args.length == 2){
 
             Player player = (Player) sender;
             Player victim = server.matchPlayer(args[0]).get(0);

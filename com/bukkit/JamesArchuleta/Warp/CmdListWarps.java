@@ -19,25 +19,24 @@ public class CmdListWarps extends Command {
             org.bukkit.command.Command command, String commandLabel,
             String[] args, Server server) {
 
-        if (!hasPermissions((Player) sender)) {
-            ((Player) sender)
-                    .sendMessage("You do not have permission to use this command.");
+        if (sender instanceof Player && !hasPermissions((Player) sender)) {
+            sender.sendMessage("You do not have permission to use this command.");
             return true;
         }
 
-        Player player = (Player) sender;
-
         String filter = args.length >= 1 ? args[0] : "";
-        String[] locs = Locations.getList(filter);
+        String[] locs = Locations.getList(filter, !(sender instanceof Player));
         if (locs != null && locs.length >= 1) {
             for (String i : locs) {
-                player.sendMessage(i);
+                sender.sendMessage(i);
             }
         } else {
-            player.sendMessage("No Warps Found");
+            sender.sendMessage("No Warps Found");
         }
 
-        System.out.println(player.getName() + " listed warps ");
+        if (sender instanceof Player) {
+            System.out.println(((Player) sender).getName() + " listed warps ");
+        }
         return true;
 
     }

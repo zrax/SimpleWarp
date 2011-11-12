@@ -17,23 +17,24 @@ public class CmdRemoveWarp extends Command {
             org.bukkit.command.Command command, String commandLabel,
             String[] args, Server server) {
 
-        if (!hasPermissions((Player) sender)) {
-            ((Player) sender)
-                    .sendMessage("You do not have permission to use this command.");
+        if (sender instanceof Player && !hasPermissions((Player) sender)) {
+            sender.sendMessage("You do not have permission to use this command.");
             return true;
         }
 
-        if (args.length == 1 && hasPermissions((Player) sender)) {
-            Player player = (Player) sender;
-
+        if (args.length == 1) {
             if (Locations.removeLineFromFile(args[0])) {
-                player.sendMessage("Warp removed: " + args[0]);
-                System.out.println(player.getName() + " removed warp: "
-                        + args[0]);
+                sender.sendMessage("Warp removed: " + args[0]);
+                if (sender instanceof Player) {
+                    System.out.println(((Player) sender).getName() + " removed warp: "
+                            + args[0]);
+                }
             } else {
-                player.sendMessage("Warp not found: " + args[0]);
-                System.out.println(player.getName()
-                        + " tried to remove warp (not found): " + args[0]);
+                sender.sendMessage("Warp not found: " + args[0]);
+                if (sender instanceof Player) {
+                    System.out.println(((Player) sender).getName()
+                            + " tried to remove warp (not found): " + args[0]);
+                }
             }
             return true;
         }

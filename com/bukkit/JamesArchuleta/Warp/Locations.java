@@ -148,7 +148,7 @@ public class Locations {
         return brv;
     }
 
-    public static String[] getList(String name) {
+    public static String[] getList(String name, boolean serverConsole) {
         Scanner scanner;
         List<String> list = new ArrayList<String>();
         try {
@@ -167,7 +167,7 @@ public class Locations {
                         i++;
                     }
 
-                    if (i >= 8) {
+                    if (!serverConsole && i >= 8) {
                         break;
                     }
 

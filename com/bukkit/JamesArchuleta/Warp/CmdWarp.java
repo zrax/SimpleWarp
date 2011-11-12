@@ -17,13 +17,17 @@ public class CmdWarp extends Command {
             org.bukkit.command.Command command, String commandLabel,
             String[] args, Server server) {
 
-        if (!hasPermissions((Player) sender)) {
-            ((Player) sender)
-                    .sendMessage("You do not have permission to use this command.");
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can use the warp command.");
             return true;
         }
 
-        if (args.length == 1 && hasPermissions((Player) sender)) {
+        if (!hasPermissions((Player) sender)) {
+            sender.sendMessage("You do not have permission to use this command.");
+            return true;
+        }
+
+        if (args.length == 1) {
 
             Player player = (Player) sender;
 
