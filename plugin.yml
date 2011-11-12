@@ -2,7 +2,7 @@ name: SimpleWarp
 
 main: com.bukkit.JamesArchuleta.Warp.Warp
 
-version: 1.63 
+version: 1.6999
 
 commands:
   warp:

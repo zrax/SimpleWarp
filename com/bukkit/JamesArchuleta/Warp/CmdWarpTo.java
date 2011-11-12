@@ -35,7 +35,7 @@ public class CmdWarpTo extends Command {
 			Location l = Locations.getLocation(args[1],server);
 	    	
 	    	if (l != null){
-	    		victim.teleportTo(l);
+	    		victim.teleport(l);
 	    		victim.sendMessage("Warped by " + player.getDisplayName());
 	    		player.sendMessage(victim.getName()+ " warped to " + args[1]);
 	    		System.out.println(victim.getName() + " warped to " + args[1] + " By " + player.getName());

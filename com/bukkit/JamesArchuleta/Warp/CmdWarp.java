@@ -38,7 +38,7 @@ public class CmdWarp extends Command {
 			
 			if (l != null) {
 				
-				player.teleportTo(l);
+				player.teleport(l);
 				player.sendMessage("Warped to " + args[0]);
 				System.out.println(player.getName() + " warped to " + args[0]);
 			} else {
