@@ -20,4 +20,3 @@ commands:
   removewarp:
     description: sets a your location to warp point 
     usage: /<command> <name> removes warp at your location
-    
